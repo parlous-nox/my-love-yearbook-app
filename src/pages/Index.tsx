@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import CountdownTimer from "@/components/CountdownTimer";
 import LoveLetter from "@/components/LoveLetter";
 import LoveCard from "@/components/LoveCard";
-import MemoriesSection from "@/components/MemoriesSection";
 import GiftReveal from "@/components/GiftReveal";
 import InteractiveTimeline from "@/components/InteractiveTimeline";
 import { Heart, CakeSlice, CalendarHeart } from "lucide-react";
@@ -36,34 +35,6 @@ const Index = () => {
     {
       title: "Our Conversations",
       description: "Every moment talking with you feels like an adventure, even when we're miles apart."
-    }
-  ];
-  
-  const memories = [
-    {
-      title: "When We First Met",
-      description: "I still remember that day like it was yesterday. The way you smiled at me changed everything.",
-      date: "May 2024"
-    },
-    {
-      title: "Our First Call",
-      description: "I was so nervous, but the moment we started talking, it felt like we'd known each other forever.",
-      date: "May 2024"
-    },
-    {
-      title: "Late Night Talks",
-      description: "Those nights we stayed up talking until sunrise showed me how compatible we are.",
-      date: "August 2024"
-    },
-    {
-      title: "That Rainy Day",
-      description: "When you sent me that picture of you in the rain, and we talked for hours about our dreams.",
-      date: "October 2024"
-    },
-    {
-      title: "Holiday Magic",
-      description: "Our first holiday season together was magical, even from a distance. You made every tradition feel special.",
-      date: "December 2024"
     }
   ];
 
@@ -153,12 +124,6 @@ Ahmed`;
               />
             ))}
           </div>
-        </section>
-        
-        {/* Favorite Memories Section */}
-        <section className="py-20 px-4 bg-love-pink/20">
-          <h2 className="section-title">Favorite Memories</h2>
-          <MemoriesSection memories={memories} />
         </section>
         
         {/* Gift Reveal Section */}
