@@ -18,14 +18,22 @@ const InteractiveTimeline = ({ events }: InteractiveTimelineProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeEvent = events[activeIndex];
 
+  // Create a proper handler function that can receive the event
+  // and extract the selected index from the Carousel API
+  const handleSelect = (api: any) => {
+    if (api && typeof api.selectedScrollSnap === 'function') {
+      const index = api.selectedScrollSnap();
+      setActiveIndex(index);
+    }
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto">
       <div className="love-card pb-12 relative overflow-hidden">
         <Carousel
           className="w-full"
-          // Fix: The Carousel component's onSelect callback provides a number value
-          // We need to ensure we're passing that number to setActiveIndex
-          onSelect={setActiveIndex}
+          // Use the handler function that will properly process the event
+          onSelect={handleSelect}
         >
           <CarouselContent className="-ml-1">
             {events.map((event, index) => (
