@@ -23,6 +23,8 @@ const InteractiveTimeline = ({ events }: InteractiveTimelineProps) => {
       <div className="love-card pb-12 relative overflow-hidden">
         <Carousel
           className="w-full"
+          // Fix: instead of directly passing the event to setActiveIndex, get the index value
+          // from the Carousel's onSelect callback
           onSelect={(index) => setActiveIndex(index)}
         >
           <CarouselContent className="-ml-1">
