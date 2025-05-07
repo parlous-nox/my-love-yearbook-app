@@ -26,37 +26,19 @@ const GiftReveal = () => {
       content: (
         <div className="text-center">
           <h3 className="text-xl font-dancing font-bold mb-4">Songs That Remind Me of You</h3>
-          <ul className="text-left space-y-2 mb-6">
-            <li className="flex items-center gap-2">
-              <Heart className="w-4 h-4 text-love-rose" />
-              <span>Our First Dance</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Heart className="w-4 h-4 text-love-rose" />
-              <span>The Song From Our First Date</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Heart className="w-4 h-4 text-love-rose" />
-              <span>That Song You Always Sing</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Heart className="w-4 h-4 text-love-rose" />
-              <span>The One That Made Us Laugh</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Heart className="w-4 h-4 text-love-rose" />
-              <span>Our Late Night Drive Song</span>
-            </li>
-          </ul>
-          <Button asChild className="bg-love-rose hover:bg-love-red">
-            <a 
-              href="https://open.spotify.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Listen Now
-            </a>
-          </Button>
+          <div className="mb-6 rounded-lg overflow-hidden shadow-md">
+            <iframe 
+              src="https://open.spotify.com/embed/playlist/1KTxPHdP3dLgtKIwIxrgcp?utm_source=generator" 
+              width="100%" 
+              height="352" 
+              frameBorder="0" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy"
+              title="Spotify playlist"
+              className="rounded-md"
+            ></iframe>
+          </div>
+          <p className="text-gray-600 text-sm mb-4">A collection of songs that make me think of you ❤️</p>
         </div>
       )
     },
@@ -195,7 +177,8 @@ const GiftReveal = () => {
         </DialogContent>
       </Dialog>
 
-      <style jsx>{`
+      <style>
+        {`
         @keyframes float-1 {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
@@ -215,10 +198,10 @@ const GiftReveal = () => {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };
 
 export default GiftReveal;
-
