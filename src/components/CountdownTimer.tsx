@@ -7,7 +7,12 @@ interface CountdownProps {
 
 const CountdownTimer = ({ targetDate }: CountdownProps) => {
   const calculateTimeLeft = () => {
-    const difference = +new Date(targetDate) - +new Date();
+    // Parse the target date with IST timezone offset (+5:30)
+    const targetTime = new Date(targetDate);
+    // Current date for comparison
+    const now = new Date();
+    
+    const difference = +targetTime - +now;
     let timeLeft: { days: number; hours: number; minutes: number; seconds: number } = {
       days: 0,
       hours: 0,
@@ -53,7 +58,7 @@ const CountdownTimer = ({ targetDate }: CountdownProps) => {
       {isAnniversary ? (
         <div className="animate-fade-in text-center">
           <h2 className="text-3xl md:text-4xl font-dancing font-bold mb-4 text-love-rose">
-            Happy Anniversary!
+            Happy Anniversary, Zoya!
           </h2>
           <p className="text-xl">Today marks one amazing year together ❤️</p>
         </div>

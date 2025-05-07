@@ -2,20 +2,20 @@
 import Header from "@/components/Header";
 import CountdownTimer from "@/components/CountdownTimer";
 import LoveLetter from "@/components/LoveLetter";
-import TimelineEvent from "@/components/TimelineEvent";
 import LoveCard from "@/components/LoveCard";
 import MemoriesSection from "@/components/MemoriesSection";
 import GiftReveal from "@/components/GiftReveal";
+import InteractiveTimeline from "@/components/InteractiveTimeline";
 import { Heart, CakeSlice, CalendarHeart } from "lucide-react";
 
 const Index = () => {
-  // This should be your anniversary date
-  const anniversaryDate = "2025-05-08";
+  // Anniversary date in IST (UTC+5:30)
+  const anniversaryDate = "2025-05-08T00:00:00+05:30";
   
   const loveReasons = [
     {
       title: "Your Smile",
-      description: "Your smile brightens even the darkest of my days. It's like sunshine after rain."
+      description: "Your smile brightens even the darkest of my days, Zoya. It's like sunshine after rain."
     },
     {
       title: "Your Kindness",
@@ -27,15 +27,15 @@ const Index = () => {
     },
     {
       title: "Your Laugh",
-      description: "Your laugh is my favorite sound in the whole world. It's music to my ears."
+      description: "Your laugh is my favorite sound in the whole world. It's music to my ears, Zoya."
     },
     {
       title: "Your Passion",
       description: "The way you pour your heart into everything you do is inspiring and beautiful to witness."
     },
     {
-      title: "Our Adventures",
-      description: "Every moment with you feels like an adventure, even the ordinary days become extraordinary."
+      title: "Our Conversations",
+      description: "Every moment talking with you feels like an adventure, even when we're miles apart."
     }
   ];
   
@@ -46,41 +46,75 @@ const Index = () => {
       date: "May 2024"
     },
     {
-      title: "Our First Date",
+      title: "Our First Call",
       description: "I was so nervous, but the moment we started talking, it felt like we'd known each other forever.",
       date: "May 2024"
     },
     {
-      title: "Our First Trip",
-      description: "Exploring new places with you showed me how compatible we are and how much fun we have together.",
+      title: "Late Night Talks",
+      description: "Those nights we stayed up talking until sunrise showed me how compatible we are.",
       date: "August 2024"
     },
     {
       title: "That Rainy Day",
-      description: "We got caught in the rain and instead of running for cover, we danced. I knew then how special you are.",
+      description: "When you sent me that picture of you in the rain, and we talked for hours about our dreams.",
       date: "October 2024"
     },
     {
       title: "Holiday Magic",
-      description: "Our first holiday season together was magical. You made every tradition feel new and exciting.",
+      description: "Our first holiday season together was magical, even from a distance. You made every tradition feel special.",
       date: "December 2024"
     }
   ];
+
+  const timelineEvents = [
+    {
+      date: "May 2024",
+      title: "Where It All Began",
+      description: "Our beautiful journey began when we first connected online. Little did we know, that moment would be the start of something magical.",
+    },
+    {
+      date: "July 2024",
+      title: "First 'I Love You'",
+      description: "During our video call, when I first told you I loved you, my heart felt complete. Those three words changed everything.",
+    },
+    {
+      date: "October 2024",
+      title: "Supporting Each Other",
+      description: "When you helped me through that difficult time, I realized how much strength we give each other, even from a distance.",
+    },
+    {
+      date: "December 2024",
+      title: "Holiday Magic",
+      description: "Our first holiday season together was filled with virtual dates, shared movies, and creating new traditions that I hope we'll continue for years.",
+    },
+    {
+      date: "February 2025",
+      title: "Through Challenges",
+      description: "Even when times were tough and distance felt overwhelming, we faced everything together. Your strength and resilience amazed me.",
+    },
+    {
+      date: "May 8, 2025",
+      title: "One Year of Us",
+      description: "Today, we celebrate one amazing year together. A year of growth, love, and building a connection I cherish more than anything. Here's to many more.",
+      highlight: true
+    }
+  ];
   
-  const loveLetter = `My dearest love,
+  const loveLetter = `My dearest Zoya,
 
 As we celebrate our first anniversary, I wanted to take a moment to tell you how much you mean to me.
 
 This past year has been the most beautiful chapter of my life, all because of you. From our first conversation to this very moment, you have filled my days with joy, laughter, and so much love.
 
-I cherish every smile, every touch, every quiet moment we share. You've taught me what it means to truly love someone with my whole heart.
+I cherish every smile, every call, every message we share. You've taught me what it means to truly love someone with my whole heart, even across the distance between us.
 
 Thank you for being you. Thank you for choosing me. Thank you for making this the most incredible year.
 
 I love you more with each passing day, and I can't wait to create countless more beautiful memories together.
 
 Forever yours,
-[Your Name]`;
+Ahmed`;
 
   return (
     <>
@@ -91,10 +125,10 @@ Forever yours,
         <section id="home" className="min-h-[90vh] flex flex-col items-center justify-center px-4 py-20">
           <div className="text-center max-w-3xl mx-auto animate-fade-in">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-dancing font-bold mb-6">
-              <span className="heart-bg">One Year of Love</span>
+              <span className="heart-bg">Zoya & Ahmed</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-700">
-              Celebrating 365 days of laughter, adventures, and endless love with you
+              Celebrating 365 days of laughter, conversations, and endless love with you
             </p>
             
             <div className="relative inline-block mb-12">
@@ -117,74 +151,7 @@ Forever yours,
         {/* Our Journey Timeline Section */}
         <section id="timeline" className="py-20 px-4 bg-love-light-purple/20">
           <h2 className="section-title">Our Journey Together</h2>
-          
-          <div className="max-w-3xl mx-auto">
-            <TimelineEvent 
-              date="May 2024" 
-              title="Where It All Began"
-            >
-              <p>
-                Our beautiful journey began when we first met. Little did we know,
-                that moment would be the start of something magical.
-              </p>
-            </TimelineEvent>
-            
-            <TimelineEvent 
-              date="July 2024" 
-              title="First 'I Love You'"
-              isEven={true}
-            >
-              <p>
-                Under the stars, when you first told me you loved me, my heart felt complete.
-                Those three words changed everything.
-              </p>
-            </TimelineEvent>
-            
-            <TimelineEvent 
-              date="October 2024" 
-              title="Our First Adventure"
-            >
-              <p>
-                Our trip to the mountains showed me how incredible exploring the world with you could be.
-                Every view was better because we shared it.
-              </p>
-            </TimelineEvent>
-            
-            <TimelineEvent 
-              date="December 2024" 
-              title="Holiday Magic"
-              isEven={true}
-            >
-              <p>
-                Our first holiday season together was filled with warmth, love, and new traditions
-                that I hope we'll continue for years to come.
-              </p>
-            </TimelineEvent>
-            
-            <TimelineEvent 
-              date="February 2025" 
-              title="Through Challenges"
-            >
-              <p>
-                Even when times were tough, we faced everything together. Your strength
-                and resilience amazed me and made our bond stronger.
-              </p>
-            </TimelineEvent>
-            
-            <TimelineEvent 
-              date="May 8, 2025" 
-              title="One Year of Us"
-              isEven={true}
-            >
-              <p>
-                Today, we celebrate one amazing year together. A year of growth, love, and building
-                a connection I cherish more than anything. Here's to many more.
-              </p>
-              <div className="flex justify-center mt-4">
-                <CalendarHeart className="w-8 h-8 text-love-rose animate-pulse-heart" />
-              </div>
-            </TimelineEvent>
-          </div>
+          <InteractiveTimeline events={timelineEvents} />
         </section>
         
         {/* Why I Love You Section */}
@@ -223,7 +190,7 @@ Forever yours,
               Here's to Many More Years
             </h2>
             <p className="text-lg mb-6">
-              Thank you for the most amazing year of my life. I can't wait to see what the future holds for us.
+              Thank you for the most amazing year of my life, Zoya. I can't wait to see what the future holds for us.
               Every day with you is a gift that I cherish deeply.
             </p>
             <p className="text-2xl font-dancing font-bold text-love-purple">
