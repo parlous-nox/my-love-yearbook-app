@@ -44,9 +44,6 @@ const InteractiveTimeline = ({ events }: InteractiveTimelineProps) => {
                   </div>
                   
                   <div className="text-center mb-6 animate-fade-in">
-                    <span className="text-sm px-3 py-1 rounded-full bg-love-light-purple text-love-purple font-medium">
-                      {event.date}
-                    </span>
                     <h3 className="text-2xl md:text-3xl font-dancing font-bold text-love-rose mt-3">
                       {event.title}
                     </h3>

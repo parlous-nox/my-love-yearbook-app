@@ -69,32 +69,17 @@ const Index = () => {
 
   const timelineEvents = [
     {
-      date: "May 2024",
+      date: "",
       title: "Where It All Began",
       description: "Our beautiful journey began when we first connected online. Little did we know, that moment would be the start of something magical.",
     },
     {
-      date: "July 2024",
-      title: "First 'I Love You'",
-      description: "During our video call, when I first told you I loved you, my heart felt complete. Those three words changed everything.",
-    },
-    {
-      date: "October 2024",
+      date: "",
       title: "Supporting Each Other",
       description: "When you helped me through that difficult time, I realized how much strength we give each other, even from a distance.",
     },
     {
-      date: "December 2024",
-      title: "Holiday Magic",
-      description: "Our first holiday season together was filled with virtual dates, shared movies, and creating new traditions that I hope we'll continue for years.",
-    },
-    {
-      date: "February 2025",
-      title: "Through Challenges",
-      description: "Even when times were tough and distance felt overwhelming, we faced everything together. Your strength and resilience amazed me.",
-    },
-    {
-      date: "May 8, 2025",
+      date: "",
       title: "One Year of Us",
       description: "Today, we celebrate one amazing year together. A year of growth, love, and building a connection I cherish more than anything. Here's to many more.",
       highlight: true
