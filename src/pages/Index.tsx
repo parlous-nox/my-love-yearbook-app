@@ -47,7 +47,7 @@ const Index = () => {
     {
       date: "",
       title: "Supporting Each Other",
-      description: "When you helped me through that difficult time, I realized how much strength we give each other, even from a distance.",
+      description: "Whenever you help me through the difficult times, I realize how much strength we give each other, even from a distance.",
     },
     {
       date: "",
