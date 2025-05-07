@@ -1,25 +1,121 @@
 
 import { useState } from "react";
-import { Gift, Heart } from "lucide-react";
+import { Gift, Heart, Music, Sparkles, Star } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const GiftReveal = () => {
   const [isOpened, setIsOpened] = useState(false);
-  const [showPlaylist, setShowPlaylist] = useState(false);
+  const [currentGift, setCurrentGift] = useState<string | null>(null);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const toggleOpen = () => {
     setIsOpened(!isOpened);
-    if (!isOpened) {
-      setTimeout(() => setShowPlaylist(true), 1000);
-    } else {
-      setShowPlaylist(false);
-    }
   };
 
+  const showGift = (gift: string) => {
+    setCurrentGift(gift);
+    setOpenDialog(true);
+  };
+
+  const gifts = [
+    {
+      id: "playlist",
+      title: "Our Special Playlist",
+      icon: <Music className="w-6 h-6 text-love-rose" />,
+      content: (
+        <div className="text-center">
+          <h3 className="text-xl font-dancing font-bold mb-4">Songs That Remind Me of You</h3>
+          <ul className="text-left space-y-2 mb-6">
+            <li className="flex items-center gap-2">
+              <Heart className="w-4 h-4 text-love-rose" />
+              <span>Our First Dance</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Heart className="w-4 h-4 text-love-rose" />
+              <span>The Song From Our First Date</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Heart className="w-4 h-4 text-love-rose" />
+              <span>That Song You Always Sing</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Heart className="w-4 h-4 text-love-rose" />
+              <span>The One That Made Us Laugh</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Heart className="w-4 h-4 text-love-rose" />
+              <span>Our Late Night Drive Song</span>
+            </li>
+          </ul>
+          <Button asChild className="bg-love-rose hover:bg-love-red">
+            <a 
+              href="https://open.spotify.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Listen Now
+            </a>
+          </Button>
+        </div>
+      )
+    },
+    {
+      id: "poem",
+      title: "A Poem For You",
+      icon: <Star className="w-6 h-6 text-yellow-400" />,
+      content: (
+        <div className="text-center">
+          <h3 className="text-xl font-dancing font-bold mb-4">Every Moment With You</h3>
+          <div className="italic text-gray-700 mb-6 space-y-4">
+            <p>
+              In every sunrise, I find your smile,<br />
+              In every star, your eyes that shine;<br />
+              With every heartbeat, love grows stronger,<br />
+              With every day, I love you longer.
+            </p>
+            <p>
+              Distance may keep our hands apart,<br />
+              But nothing can separate our hearts;<br />
+              For love like ours knows no measure,<br />
+              You are my greatest, truest treasure.
+            </p>
+          </div>
+          <p className="font-dancing text-lg text-love-purple">— With all my love</p>
+        </div>
+      )
+    },
+    {
+      id: "promise",
+      title: "My Promise To You",
+      icon: <Sparkles className="w-6 h-6 text-love-purple" />,
+      content: (
+        <div className="text-center">
+          <h3 className="text-xl font-dancing font-bold mb-4">My Promise</h3>
+          <div className="border-2 border-dashed border-love-pink p-6 mb-6 rounded-lg bg-white/50 backdrop-blur-sm">
+            <p className="mb-4 text-gray-700">
+              I promise to be your support when times get tough, your joy when days are bright, and your constant companion through it all.
+            </p>
+            <p className="mb-6 text-gray-700">
+              I promise to cherish every moment we spend together, whether close or far apart. To listen to your dreams and help make them reality.
+            </p>
+            <p className="text-lg font-medium text-love-purple">
+              Most of all, I promise to love you more with each passing day.
+            </p>
+          </div>
+          <div className="animate-pulse">
+            <Heart className="w-8 h-8 text-love-rose mx-auto" />
+          </div>
+        </div>
+      )
+    }
+  ];
+
   return (
-    <div className="w-full max-w-md mx-auto text-center">
+    <div className="w-full max-w-lg mx-auto text-center">
       <div 
         className={`love-card cursor-pointer transition-all duration-700 transform ${
-          isOpened ? "bg-gradient-to-br from-love-light-purple to-love-purple" : ""
+          isOpened ? "animate-fade-in" : "hover:shadow-xl hover:scale-105"
         }`}
         onClick={toggleOpen}
       >
@@ -27,68 +123,102 @@ const GiftReveal = () => {
           <div className="py-8 flex flex-col items-center">
             <Gift className="w-16 h-16 text-love-rose animate-pulse mb-4" />
             <h3 className="text-2xl font-dancing font-bold mb-4">
-              A Special Gift For You, Zoya
+              A Special Gift Box For You, Zoya
             </h3>
             <p className="text-gray-600 mb-6">
-              Click to reveal your surprise
+              Click to unwrap your surprise gift box
             </p>
             <div className="love-button inline-flex items-center justify-center">
-              Open gift
+              Open gift box
             </div>
           </div>
         ) : (
           <div className="py-8 flex flex-col items-center animate-fade-in">
-            <h3 className="text-2xl md:text-3xl font-dancing font-bold mb-6 text-white">
-              Your special playlist awaits...
+            <h3 className="text-2xl md:text-3xl font-dancing font-bold mb-6 text-love-purple">
+              Your special gifts await...
             </h3>
-            <p className="text-white mb-6 max-w-sm">
-              I've created a special playlist with all our favorite songs. Each one reminds me of a special moment with you. Click below to listen and remember all those beautiful memories we've shared. ❤️
+            
+            <div className="relative mx-auto w-64 h-64 mb-8">
+              {/* Animated gift box */}
+              <div className="absolute inset-0 p-4 flex items-center justify-center">
+                <div className="w-full h-full bg-gradient-to-br from-love-light-purple to-love-purple rounded-lg flex items-center justify-center animate-pulse-heart">
+                  <Sparkles className="w-12 h-12 text-white/80 animate-spin-slow" />
+                </div>
+              </div>
+              
+              {/* Floating gifts */}
+              <div className="absolute w-full h-full">
+                {gifts.map((gift, index) => (
+                  <button
+                    key={gift.id}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      showGift(gift.id);
+                    }}
+                    className={`absolute p-3 bg-white rounded-full shadow-lg hover:scale-110 transition-all duration-300
+                      ${index === 0 ? 'top-6 right-6' : 
+                        index === 1 ? 'bottom-6 left-6' : 
+                        'bottom-12 right-12'}`}
+                    style={{
+                      animation: `float-${index + 1} ${3 + index}s ease-in-out infinite`
+                    }}
+                  >
+                    {gift.icon}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            <p className="text-gray-600 mb-6 max-w-sm">
+              Click on each floating icon to reveal a special gift I've prepared for you. Each one represents something from my heart to yours. ❤️
             </p>
             
-            {showPlaylist && (
-              <div className="w-full max-w-sm bg-white/90 rounded-lg p-4 shadow-lg mb-4 animate-fade-in">
-                <h4 className="font-dancing text-xl font-bold text-love-purple mb-2">
-                  Songs That Remind Me of You
-                </h4>
-                <ul className="text-left space-y-2">
-                  <li className="flex items-center gap-2">
-                    <Heart className="w-4 h-4 text-love-rose" />
-                    <span>Our First Dance</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Heart className="w-4 h-4 text-love-rose" />
-                    <span>The Song From Our First Date</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Heart className="w-4 h-4 text-love-rose" />
-                    <span>That Song You Always Sing</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Heart className="w-4 h-4 text-love-rose" />
-                    <span>The One That Made Us Laugh</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Heart className="w-4 h-4 text-love-rose" />
-                    <span>Our Late Night Drive Song</span>
-                  </li>
-                </ul>
-              </div>
-            )}
-            
-            <a 
-              href="https://open.spotify.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-love-purple font-medium px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2"
+            <button 
               onClick={(e) => e.stopPropagation()}
+              className="bg-white text-love-purple font-medium px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2"
             >
-              Listen to our playlist
-            </a>
+              <Heart className="w-4 h-4 text-love-rose" />
+              With all my love
+            </button>
           </div>
         )}
       </div>
+
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+        <DialogContent className="bg-gradient-to-br from-white to-love-light-purple/20 border border-love-pink">
+          <DialogHeader>
+            <DialogTitle className="text-center text-2xl font-dancing font-bold text-love-purple">
+              {currentGift && gifts.find(g => g.id === currentGift)?.title}
+            </DialogTitle>
+          </DialogHeader>
+          {currentGift && gifts.find(g => g.id === currentGift)?.content}
+        </DialogContent>
+      </Dialog>
+
+      <style jsx>{`
+        @keyframes float-1 {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes float-2 {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes float-3 {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-8px); }
+        }
+        
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 };
 
 export default GiftReveal;
+
