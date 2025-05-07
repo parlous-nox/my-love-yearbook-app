@@ -51,16 +51,16 @@ const GiftReveal = () => {
           <h3 className="text-xl font-dancing font-bold mb-4">Every Moment With You</h3>
           <div className="italic text-gray-700 mb-6 space-y-4">
             <p>
-              In every sunrise, I find your smile,<br />
-              In every star, your eyes that shine;<br />
-              With every heartbeat, love grows stronger,<br />
-              With every day, I love you longer.
+              When the noise of the world fades away,<br />
+              It's your voice that I want to stay.<br />
+              No need for riches, gold, or fuss—<br />
+              The richest love is found in us.
             </p>
             <p>
-              Distance may keep our hands apart,<br />
-              But nothing can separate our hearts;<br />
-              For love like ours knows no measure,<br />
-              You are my greatest, truest treasure.
+              Your laugh, the way you care,<br />
+              Turns ordinary into rare.<br />
+              No grander truth could I discuss,<br />
+              Than simply this: I love you thus.
             </p>
           </div>
           <p className="font-dancing text-lg text-love-purple">— With all my love</p>
